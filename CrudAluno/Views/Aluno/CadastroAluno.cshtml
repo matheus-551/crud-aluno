@@ -1,0 +1,43 @@
+﻿@model CrudAluno.Models.Aluno;
+
+<div>
+    <div>
+        <h1>Cadastro de Aluno</h1>
+    </div>
+    <form asp-controller="Aluno" asp-action="Criar" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id"/>
+        <div class="mb-2">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-2">
+            <label asp-for="Email" class="form-label">E-mail</label>
+            <input type="email" asp-for="Email" class="form-control" placeholder="example@email.com">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-2">
+            <label asp-for="Curso" class="form-label">Curso</label>
+            <select asp-for="Curso" class="form-select" aria-label="Curso">
+                <option selected>Selecione o curso....</option>
+                <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+                <option value="Administração">Administração</option>
+                <option value="Contabilidade">Contabilidade</option>
+                <option value="Letras">Letras</option>
+            </select>
+            <span asp-validation-for="Curso" class="text-danger"></span>
+        </div>
+ 
+        <input type="submit" class="btn btn-primary" value="Cadastrar"/>
+        <a href="/" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,35 @@
+﻿@model List<CrudAluno.Models.Aluno>;
+
+<div>
+    <div>
+        <h1 class="title">Lista de Alunos</h1>
+        <a href="/cadastro-aluno" class="btn btn-primary">Novo Alnuo</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome Completo</th>
+                <th scope="col">Email</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var aluno in @Model)
+            {
+             <tr>
+                 <th scope="row">@aluno.Id</th>
+                 <td>@aluno.Name</td>
+                 <td>@aluno.Email</td>
+                 <td>@aluno.Curso</td>
+                 <td>
+                        <a asp-controller="Aluno" asp-action="EditarAluno" asp-route-id="@aluno.Id" class="btn btn-outline-primary">Edit</a>
+                        <a asp-controller="Aluno" asp-action="Delete" asp-route-id="@aluno.Id" class="btn btn-outline-danger">Delete</a>
+                 </td>
+             </tr>   
+            }
+        </tbody>
+    </table>
+</div>
